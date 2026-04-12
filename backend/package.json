@@ -10,6 +10,9 @@
   "description": "",
   "dependencies": {
     "express": "^5.2.1",
+    "mongoose": "^9.4.1",
+    "mongoosh": "^0.0.7",
+    "multer": "^2.1.1",
     "nodemon": "^3.1.14"
   }
 }
