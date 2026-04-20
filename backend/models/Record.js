@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const recordSchema = new mongoose.Schema({
     farmId: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Farm',
         required: true
     },
     type: {
