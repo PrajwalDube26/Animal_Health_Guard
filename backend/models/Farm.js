@@ -1,33 +1,35 @@
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
 
-const farmSchema=new mongoose.Schema({
-    userId:{
-        type:String,
-        required:true
+const farmSchema = new mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     },
-    farmName:{
-        type:String,
+    farmName: {
+        type: String,
+        required: true
     },
-    farmType:{
-        type:String,
-        enum:['poultry','pig'],
-        required:true
+    farmType: {
+        type: String,
+        enum: ['poultry', 'pig'],
+        required: true
     },
-    location:{
-        type:String,
-        required:true
+    location: {
+        type: String,
+        required: true
     },
-    size:{
-        type:String,
-        required:true
+    size: {
+        type: String,
+        required: true
     },
-    numberOfAnimals:{
-        type:Number,
-        required:true,
+    numberOfAnimals: {
+        type: Number,
+        required: true,
         min: 1
     }
 });
 
-const FarmModel=mongoose.model("Farm",farmSchema);
+const FarmModel = mongoose.model("Farm", farmSchema);
 
-module.exports=FarmModel;
+module.exports = FarmModel;

@@ -1,33 +1,35 @@
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
 
-const biosecurity_assessmentSchema=new mongoose.Schema({
-    farmId:{
-        type:String,
-        required:true
+const biosecurity_assessmentSchema = new mongoose.Schema({
+    farmId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Farm',
+        required: true
     },
-    answers:[
+    answers: [
         {
             question: String,
             answer: String
         }
     ],
-    riskScore:{
-        type:Number,
+    riskScore: {
+        type: Number,
         min: 0,
-        max: 100
+        max: 100,
+        required: true
 
     },
-    riskLevel:{
-        type:String,
-        enum:["low","medium","high"],
+    riskLevel: {
+        type: String,
+        enum: ["low", "medium", "high"],
         required: true
     },
-    date:{
-        type:Date,
-        default:Date.now,
+    date: {
+        type: Date,
+        default: Date.now,
     }
 });
 
-const Biosecurity_Assessment_Model=mongoose.model("Biosecurity_Assessment",biosecurity_assessmentSchema);
+const Biosecurity_Assessment_Model = mongoose.model("Biosecurity_Assessment", biosecurity_assessmentSchema);
 
-module.exports=Biosecurity_Assessment_Model;
+module.exports = Biosecurity_Assessment_Model;
