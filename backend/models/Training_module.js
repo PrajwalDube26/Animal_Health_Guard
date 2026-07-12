@@ -20,7 +20,8 @@ const training_module_Schema = new mongoose.Schema({
         required: true
     },
     language: {
-        type: String
+        type: String,
+        default: "English"
     }
 });
 

@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
+    trainingModules: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "training_module"
+    }],
     name: {
         type: String,
         required: true

@@ -6,18 +6,11 @@ const biosecurity_assessmentSchema = new mongoose.Schema({
         ref: 'Farm',
         required: true
     },
-    answers: [
-        {
-            question: String,
-            answer: String
-        }
-    ],
     riskScore: {
         type: Number,
         min: 0,
         max: 100,
         required: true
-
     },
     riskLevel: {
         type: String,

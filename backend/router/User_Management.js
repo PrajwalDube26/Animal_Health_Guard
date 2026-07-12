@@ -1,18 +1,14 @@
 const express=require('express');
 const router=express.Router();
 
-router.get('/Login',(req,res)=>{
-    res.status(200).send("this is Login in auth api");
-});
+const {register,login,user_profile,user_update} = require('../controller/user')
+const featchuser = require('../middleware/featchuser');
 
-router.get('/Signup',(req,res)=>{
-    res.status(200).send("this is Signup in auth api");
-});
 
-router.post("/Login",(req,res)=>{
-    const name=req.body.name;
-    console.log(name);
-    res.status(200).send(`this is my name ${name}`);
-});
+router.post('/Signup',register);
+router.post('/Login',login);
+
+router.get("/getuser",featchuser,user_profile);
+router.put("/edit_user",featchuser,user_update);
     
 module.exports=router;
