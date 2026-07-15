@@ -1,4 +1,4 @@
-const User=require('../models/User');
+const Admin=require('../models/Admin');
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -6,15 +6,15 @@ const register=async(req,res)=>{
     try {
        const {name,email,password,phone,location} = req.body;
 
-       const user_by_email = await User.findOne({email});
-       if(user_by_email)
+       const admin_by_email = await Admin.findOne({email});
+       if(admin_by_email)
        {
-            return res.status(400).send({message:"user already exist"});
+            return res.status(400).send({message:"admin already exist"});
        }
 
        const hashed_password = await bcrypt.hash(password,12);
 
-        const register_user=new User({
+        const register_admin=new Admin({
             name,
             email,
             password:hashed_password,
@@ -22,23 +22,23 @@ const register=async(req,res)=>{
             location
         });
 
-        const registered_user = await register_user.save();
+        const registered_admin = await register_admin.save();
 
         const token = jwt.sign({
-            id:registered_user._id
+            id:registered_admin._id
             }
             ,process.env.JWT_SECRET
             ,{expiresIn:"7d"}
         );
 
-        res.cookie("token",token,{
+        res.cookie("admin_token",token,{
             httpOnly:true,
             secure:true,
             sameSite:"None",
             maxAge:7*24*60*60*1000
         });
         
-        res.status(201).json({message:"user register succesfully",token});
+        res.status(201).json({message:"admin register succesfully",token});
 
     }
     catch (err) {
@@ -51,25 +51,25 @@ const login=async(req,res)=>{
     try {
         const {email,password} = req.body;
 
-        const user_by_email = await User.findOne({email});
+        const admin_by_email = await Admin.findOne({email});
 
-        if (!user_by_email) 
+        if (!admin_by_email) 
         {
-            return res.status(404).json({"message":"User not found"});
+            return res.status(404).json({"message":"Admin not found"});
         }
 
-        const isMatch = await bcrypt.compare(password, user_by_email.password);
+        const isMatch = await bcrypt.compare(password, admin_by_email.password);
 
         if(isMatch)
         {
             const token = jwt.sign({
-                id:user_by_email._id
+                id:admin_by_email._id
                 }
                 ,process.env.JWT_SECRET
                 ,{expiresIn:"7d"}
             );
 
-            res.cookie("token",token,{
+            res.cookie("admin_token",token,{
                 httpOnly:true,
                 secure:true,
                 sameSite:"None",
@@ -95,7 +95,7 @@ const login=async(req,res)=>{
 
 const logout = async(req,res)=>{
     try {
-        res.clearCookie("token", {
+        res.clearCookie("admin-token", {
             httpOnly: true,
             secure: true,
             sameSite: "None"
@@ -113,23 +113,23 @@ const logout = async(req,res)=>{
 
 //login required
 
-const user_profile=async(req,res)=>{
+const admin_profile=async(req,res)=>{
     try {
-        const id=req.user.id;
+        const id=req.admin.id;
 
-        const user_by_id=await User.findById(id).select("-password");
+        const admin_by_id=await Admin.findById(id).select("-password");
 
-        if(user_by_id)
+        if(admin_by_id)
         {
-            res.status(200).json(user_by_id);
+            res.status(200).json(admin_by_id);
         }
         else
         {
-            res.status(404).json({message:"User not found"});
+            res.status(404).json({message:"Admin not found"});
         }
     }
     catch (error) {
-        res.status(500).json({message:"error occured while fetching user profile",error:error.message});
+        res.status(500).json({message:"error occured while fetching admin profile",error:error.message});
     }
 
 };
@@ -137,12 +137,12 @@ const user_profile=async(req,res)=>{
 
 //login required
 
-const user_update=async(req,res)=>{
+const admin_update=async(req,res)=>{
     try {
-        const id=req.user.id;
+        const id=req.admin.id;
         const {name,phone,location} = req.body;
 
-        const user_by_id=await User.findByIdAndUpdate(id,{
+        const admin_by_id=await Admin.findByIdAndUpdate(id,{
             name,
             phone,
             location
@@ -152,20 +152,20 @@ const user_update=async(req,res)=>{
         }).select("-password");
 
 
-        if(user_by_id)
+        if(admin_by_id)
         {
-            res.status(200).json({message:"User updated successfully",user:user_by_id});
+            res.status(200).json({message:"Admin updated successfully",admin:admin_by_id});
         }
         else
         {
-            res.status(404).json({message:"User not found"});
+            res.status(404).json({message:"Admin not found"});
         }
     }
     catch (error) {
-        res.status(500).json({message:"error occured while updating user",error:error.message});
+        res.status(500).json({message:"error occured while updating admin",error:error.message});
     }
 
 };
 
 
-module.exports={register,login,user_profile,user_update,logout};
+module.exports={register,login,admin_profile,admin_update,logout};

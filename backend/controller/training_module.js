@@ -3,8 +3,10 @@ const training_module = require('../models/Training_module');
 const createTraningModule = async(req,res)=>{
     try {
         const {title,description,content,category} = req.body;
+        const adminid = req.admin.id;
 
         const training_module_to_save = new training_module({
+            adminid,
             title,
             description,
             content,
@@ -65,8 +67,9 @@ const getAllTraningModule = async(req,res)=>{
 const deleteTraningModule = async(req,res)=>{
     try {
         const {id} = req.params;
+        const adminid = req.admin.id;
 
-        const TraningModule = await training_module.findByIdAndDelete(id);
+        const TraningModule = await training_module.findOneAndDelete({_id:id,adminid})
 
         if(!TraningModule)
         {
@@ -84,9 +87,10 @@ const deleteTraningModule = async(req,res)=>{
 const updateTraningModule = async(req,res)=>{
     try {
         const {id} = req.params;
+        const adminid = req.admin.id;
         const {title,description,content,category} = req.body;
 
-        const TraningModule = await training_module.findByIdAndUpdate(id,{$set:{
+        const TraningModule = await training_module.findOneAndUpdate({_id:id,adminid},{$set:{
             title,
             description,
             content,

@@ -11,7 +11,7 @@ const question_answers_schema = new mongoose.Schema({
         required:true
     },
     answer:{
-        type:String,
+        type:Boolean,
         required:true
     }
 });

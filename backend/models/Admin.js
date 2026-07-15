@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
+const adminSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -20,10 +20,13 @@ const userSchema = new mongoose.Schema({
         match: /^[0-9]{10}$/,
         required: true
     },
-    location: String
+    location: {
+        type: String,
+        required: true
+    }
 
 });
 
-const UserModel = mongoose.model("User", userSchema);
+const AdminModel = mongoose.model("Admin", adminSchema);
 
-module.exports = UserModel;
+module.exports = AdminModel;

@@ -28,6 +28,8 @@ const farmSchema = new mongoose.Schema({
         required: true,
         min: 1
     }
+},{
+    timestamps:true
 });
 
 const FarmModel = mongoose.model("Farm", farmSchema);

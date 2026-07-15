@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const alertSchema = new mongoose.Schema({
-    userid:{
+    adminid:{
         type: mongoose.Schema.Types.ObjectId,
-        ref:'User',
+        ref:'Admin',
         required:true
     },
     title: {
@@ -20,6 +20,7 @@ const alertSchema = new mongoose.Schema({
     },
     diseaseType: {
         type: String,
+        enum:["Bird Flu","Swine Fever","Newcastle Disease","Other"],
         required: true
     },
     severity: {

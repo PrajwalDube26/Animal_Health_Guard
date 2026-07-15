@@ -6,10 +6,10 @@ const Alert = require("../models/Alert");
 const create_alert = async(req,res) =>{
     try {
         const {title,message,location,diseaseType,severity} = req.body;
-        const userid = req.user.id;
+        const adminid = req.admin.id;
 
         const alert_to_save = new Alert({
-            userid,
+            adminid,
             title,
             message,
             location,
@@ -30,11 +30,11 @@ const create_alert = async(req,res) =>{
 
 //login required
 
-const get_alert_by_userid = async(req,res) =>{
+const get_alert_by_adminid = async(req,res) =>{
     try {
-        const userid = req.user.id;
+        const adminid = req.admin.id;
         
-        const alerts = await Alert.find({userid});
+        const alerts = await Alert.find({adminid});
 
         if(alerts.length === 0)
         {
@@ -74,16 +74,16 @@ const get_alert_by_alertid = async(req,res) =>{
 const delete_alert_by_alertid = async(req,res) =>{
     try {
         const alertid = req.params.id;
-        const userid = req.user.id;
+        const adminid = req.admin.id;
 
-        const deleted_alert = await Alert.findOneAndDelete({_id:alertid , userid});
+        const deleted_alert = await Alert.findOneAndDelete({_id:alertid , adminid});
 
         if(!deleted_alert)
         {
             return res.status(404).json({message:"alert not found"});
         }
 
-        res.status(200).json({message:`this alert is deleted for particular id : ${alertid} and userid :${userid} `,alert:deleted_alert});
+        res.status(200).json({message:`this alert is deleted for particular id : ${alertid} and adminid :${adminid} `,alert:deleted_alert});
 
     } catch (error) {
         res.status(500).json({message:"problem in deleting alert",error:error.message});
@@ -96,10 +96,10 @@ const delete_alert_by_alertid = async(req,res) =>{
 const update_alert_by_alertid = async(req,res) =>{
     try {
         const alertid = req.params.id;
-        const userid = req.user.id;
+        const adminid = req.admin.id;
         const {title,message,location,diseaseType,severity} = req.body;
 
-        const updated_alert = await Alert.findOneAndUpdate({_id:alertid , userid},{$set:{
+        const updated_alert = await Alert.findOneAndUpdate({_id:alertid , adminid},{$set:{
             title,
             message,
             location,
@@ -116,11 +116,11 @@ const update_alert_by_alertid = async(req,res) =>{
             return res.status(404).json({message:"alert not found"});
         }
 
-        res.status(200).json({message:`this alert is updated for particular id : ${alertid} and userid :${userid} `,alert:updated_alert});
+        res.status(200).json({message:`this alert is updated for particular id : ${alertid} and adminid :${adminid} `,alert:updated_alert});
 
     } catch (error) {
         res.status(500).json({message:"problem in updating alert",error:error.message});
     }
 }
 
-module.exports = {create_alert,get_alert_by_userid,get_alert_by_alertid,delete_alert_by_alertid,update_alert_by_alertid};
+module.exports = {create_alert,get_alert_by_adminid,get_alert_by_alertid,delete_alert_by_alertid,update_alert_by_alertid};

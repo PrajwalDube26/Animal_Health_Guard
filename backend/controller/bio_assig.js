@@ -2,12 +2,12 @@ const Biosecurity_Assessment_Models=require('../models/Biosecurity_assessment');
 
 const submit_assessment = async(req,res)=>{
     try {
-        const farmId = req.params.farmId;
+        const adminid = req.admin.id;
 
         const {riskScore,riskLevel} = req.body;
 
         const assignment_to_save = new Biosecurity_Assessment_Models({
-            farmId,
+            adminid,
             riskScore,
             riskLevel
         });
@@ -23,18 +23,18 @@ const submit_assessment = async(req,res)=>{
 }
 
 
-const get_assignment_of_farm = async(req,res)=>{
+const get_assignment_of_admin = async(req,res)=>{
     try {
-        const {farmId} = req.params;
+        const adminid = req.admin.id;
 
-        const assignment_of_farmid = await Biosecurity_Assessment_Models.find({farmId});
+        const assignment_of_adminid = await Biosecurity_Assessment_Models.find({adminid});
 
-        if(assignment_of_farmid.length === 0)
+        if(assignment_of_adminid.length === 0)
         {
             return res.status(404).send({ message:"not found an assignment" });
         }
 
-        res.status(200).send({message:"assignment find succesfully" , assignments:assignment_of_farmid});
+        res.status(200).send({message:"assignment find succesfully" , assignments:assignment_of_adminid});
     
     } catch (error) {
         res.status(400).send({message:"problem in assignment finding" , error:error});
@@ -47,14 +47,14 @@ const assignment_by_id = async(req,res)=>{
     try {
         const {id}=req.params;
 
-        const assignment_by_id = await Biosecurity_Assessment_Models.findById(id);
+        const assignment_byId = await Biosecurity_Assessment_Models.findById(id);
         
-        if(!assignment_by_id)
+        if(!assignment_byId)
         {
             return res.status(404).send({ message:"not found an assignment" });
         }
 
-        res.status(200).send({message:"assignment find succesfully" , assignment:assignment_by_id});
+        res.status(200).send({message:"assignment find succesfully" , assignment:assignment_byId});
 
     } 
     catch (error) 
@@ -67,9 +67,10 @@ const assignment_by_id = async(req,res)=>{
 
 const delete_assignment = async(req,res)=>{
     try {
-        const {farmId,id} = req.params;
+        const {id} = req.params;
+        const adminid = req.admin.id;
 
-        const deleted_assig = await Biosecurity_Assessment_Models.findOneAndDelete({farmId,_id:id});
+        const deleted_assig = await Biosecurity_Assessment_Models.findOneAndDelete({adminid,_id:id});
 
         if(!deleted_assig)
         {
@@ -91,10 +92,11 @@ const delete_assignment = async(req,res)=>{
 const update_assignment = async(req,res)=>{
 
     try {
-        const {farmId ,id} = req.params;
+        const {id} = req.params;
+        const adminid = req.admin.id;
         const {riskScore,riskLevel} = req.body;
 
-        const updated_assignment = await Biosecurity_Assessment_Models.findOneAndUpdate({farmId ,_id:id},{$set:{
+        const updated_assignment = await Biosecurity_Assessment_Models.findOneAndUpdate({adminid ,_id:id},{$set:{
             riskScore,
             riskLevel
         }},{
@@ -119,4 +121,4 @@ const update_assignment = async(req,res)=>{
 }
 
 
-module.exports = {submit_assessment,get_assignment_of_farm,assignment_by_id,delete_assignment,update_assignment};
+module.exports = {submit_assessment,get_assignment_of_admin,assignment_by_id,delete_assignment,update_assignment};

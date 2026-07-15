@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const biosecurity_assessmentSchema = new mongoose.Schema({
-    farmId: {
+    adminid: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Farm',
+        ref: 'Admin',
         required: true
     },
     riskScore: {

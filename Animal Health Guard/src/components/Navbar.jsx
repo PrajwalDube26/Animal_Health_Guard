@@ -1,26 +1,27 @@
 import React from "react";
+import {Link} from 'react-router-dom'
 import Login from "./Login";
 import Signup from "./Signup"
 
 const Navbar=()=>{
-    const isauthenticated=0; 
+    const isauthenticated=1; 
     return(
         <>
             {isauthenticated 
                 ? (
                     <div>
                         <button>
-                            Login
+                            <Link to="/login">Login</Link>
                         </button>
                         <button>
-                            signup
+                            <Link to="/signup">Signup</Link>
                         </button>
                     </div>
                   )
                 : (
                     <div>
                         <button>
-                            LogOut
+                            <Link to="/logout">LogOut</Link>
                         </button>
                     </div>
                   )

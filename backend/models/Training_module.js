@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const training_module_Schema = new mongoose.Schema({
+    adminid: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Admin',
+        required: true
+    },
     title: {
         type: String,
         required: true
@@ -11,7 +16,6 @@ const training_module_Schema = new mongoose.Schema({
     },
     content: {
         type: String,
-        enum: ['video', 'pdf', 'text'],
         required: true
     },
     category: {

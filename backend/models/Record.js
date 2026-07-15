@@ -8,7 +8,7 @@ const recordSchema = new mongoose.Schema({
     },
     type: {
         type: String,
-        enum: ["vaccination", "cleaning", "visitor_entry"],
+        enum: ["vaccination","cleaning","visitor_entry","medicine","feeding","mortality","egg_collection"],
         required: true
     },
     description: {
