@@ -1,0 +1,125 @@
+.getfarm-container{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#e8f5e9,#f7fff8);
+    padding:40px 20px;
+}
+
+.farm-grid{
+    width:100%;
+    max-width:550px;
+}
+
+.farm-card{
+    background:#fff;
+    border-radius:18px;
+    padding:35px;
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+    border-top:6px solid #27ae60;
+    transition:.3s;
+}
+
+.farm-card:hover{
+    transform:translateY(-5px);
+}
+
+.farm-card h3{
+    text-align:center;
+    font-size:34px;
+    color:#27ae60;
+    margin-bottom:25px;
+}
+
+.farm-details p{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:19px;
+    padding:12px 0;
+    border-bottom:1px solid #eee;
+}
+
+.farm-details strong{
+    color:#2c3e50;
+}
+
+.farm-actions{
+    margin-top:25px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.farm-actions button,
+.action-link{
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+    text-align:center;
+    text-decoration:none;
+    color:white;
+}
+
+.edit-btn{
+    background:#3498db;
+}
+
+.edit-btn:hover{
+    background:#2980b9;
+    transform:translateY(-2px);
+}
+
+.delete-btn{
+    background:#e74c3c;
+}
+
+.delete-btn:hover{
+    background:#c0392b;
+    transform:translateY(-2px);
+}
+
+.add-btn{
+    background:#27ae60;
+}
+
+.add-btn:hover{
+    background:#1e8449;
+    transform:translateY(-2px);
+}
+
+.record-btn{
+    background:#8e44ad;
+}
+
+.record-btn:hover{
+    background:#6c3483;
+    transform:translateY(-2px);
+}
+
+.no-farm{
+    text-align:center;
+    font-size:22px;
+    color:#777;
+}
+
+@media(max-width:600px){
+
+.farm-card{
+    padding:25px;
+}
+
+.farm-card h3{
+    font-size:28px;
+}
+
+.farm-details p{
+    font-size:16px;
+}
+
+}

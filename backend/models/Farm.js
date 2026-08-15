@@ -12,7 +12,7 @@ const farmSchema = new mongoose.Schema({
     },
     farmType: {
         type: String,
-        enum: ['poultry', 'pig'],
+        enum: ['dairy','poultry', 'pig','goat','sheep'],
         required: true
     },
     location: {

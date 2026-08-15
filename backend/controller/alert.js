@@ -5,15 +5,16 @@ const Alert = require("../models/Alert");
 
 const create_alert = async(req,res) =>{
     try {
-        const {title,message,location,diseaseType,severity} = req.body;
+        const {title,message,district,location,farmType,severity} = req.body;
         const adminid = req.admin.id;
 
         const alert_to_save = new Alert({
             adminid,
             title,
             message,
+            district,
             location,
-            diseaseType,
+            farmType,
             severity
         });
 
@@ -69,6 +70,25 @@ const get_alert_by_alertid = async(req,res) =>{
 }
 
 
+
+const get_all_alerts = async(req,res) =>{
+    try {
+        
+        const alerts = await Alert.find();
+
+        if(alerts.length === 0)
+        {
+            return res.status(404).json({message:"alert not found"});
+        }
+
+        res.status(200).json({message:"this is array of alerts",alerts});
+
+    } catch (error) {
+        res.status(500).json({message:"problem in reading alert",error:error.message});
+    }
+}
+
+
 //login required
 
 const delete_alert_by_alertid = async(req,res) =>{
@@ -97,13 +117,14 @@ const update_alert_by_alertid = async(req,res) =>{
     try {
         const alertid = req.params.id;
         const adminid = req.admin.id;
-        const {title,message,location,diseaseType,severity} = req.body;
+        const {title,message,district,location,farmType,severity} = req.body;
 
         const updated_alert = await Alert.findOneAndUpdate({_id:alertid , adminid},{$set:{
             title,
             message,
+            district,
             location,
-            diseaseType,
+            farmType,
             severity
         }},{
             new:true,
@@ -123,4 +144,4 @@ const update_alert_by_alertid = async(req,res) =>{
     }
 }
 
-module.exports = {create_alert,get_alert_by_adminid,get_alert_by_alertid,delete_alert_by_alertid,update_alert_by_alertid};
+module.exports = {create_alert,get_alert_by_adminid,get_alert_by_alertid,get_all_alerts,delete_alert_by_alertid,update_alert_by_alertid};

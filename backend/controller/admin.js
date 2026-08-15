@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const register=async(req,res)=>{
     try {
-       const {name,email,password,phone,location} = req.body;
+       const {name,email,password,phone,district,location} = req.body;
 
        const admin_by_email = await Admin.findOne({email});
        if(admin_by_email)
@@ -19,6 +19,7 @@ const register=async(req,res)=>{
             email,
             password:hashed_password,
             phone,
+            district, 
             location
         });
 
@@ -42,7 +43,7 @@ const register=async(req,res)=>{
 
     }
     catch (err) {
-        res.status(500).json({message:"error occuredin register",error:err.message});
+        res.status(500).json({message:"error occured in register",error:err.message});
     }
     
 };
@@ -140,11 +141,12 @@ const admin_profile=async(req,res)=>{
 const admin_update=async(req,res)=>{
     try {
         const id=req.admin.id;
-        const {name,phone,location} = req.body;
+        const {name,phone,district,location} = req.body;
 
         const admin_by_id=await Admin.findByIdAndUpdate(id,{
             name,
             phone,
+            district,
             location
         },{
             new: true,

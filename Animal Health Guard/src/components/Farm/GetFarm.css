@@ -1,0 +1,302 @@
+/* =========================
+   Header
+========================= */
+
+.getfarm-header {
+    max-width: 1100px;
+    margin: 35px auto;
+    padding: 0 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Space between heading and button */
+    gap: 50px;
+}
+
+.getfarm-header h1 {
+    font-size: 38px;
+    color: #1B5E20;
+    margin: 0;
+    font-weight: 700;
+}
+
+
+/* =========================
+   Add Farm Button
+========================= */
+
+.add-farm-btn {
+    text-decoration: none;
+
+    background: #2E7D32;
+    color: white;
+
+    padding: 16px 28px;
+    border-radius: 10px;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.add-farm-btn:hover {
+    background: #1B5E20;
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   Main Container
+========================= */
+
+.getfarm-container {
+    min-height: 100vh;
+
+    background: linear-gradient(
+        135deg,
+        #eef8f0,
+        #ffffff
+    );
+
+    /* Reduced top empty space */
+    padding: 35px 40px 60px;
+}
+
+
+/* =========================
+   Farm Grid
+========================= */
+
+.farm-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+
+    display: grid;
+
+    /* Two wider cards */
+    grid-template-columns: repeat(2, minmax(450px, 500px));
+
+    justify-content: center;
+
+    gap: 35px;
+}
+
+
+/* =========================
+   Farm Card
+========================= */
+
+.farm-card {
+    width: 100%;
+    box-sizing: border-box;
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 30px 35px;
+
+    border-top: 6px solid #2E7D32;
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s,
+        box-shadow 0.3s;
+}
+
+
+/* Farm Card Hover */
+
+.farm-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 18px 38px
+        rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================
+   Farm Name
+========================= */
+
+.farm-card h3 {
+    color: #2E7D32;
+
+    font-size: 30px;
+
+    text-align: center;
+
+    margin: 0 0 20px;
+
+    /* Prevent unnecessary line breaks */
+    word-break: normal;
+}
+
+
+/* =========================
+   Farm Details
+========================= */
+
+.farm-details p {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 14px 0;
+
+    margin: 0;
+
+    border-bottom:
+        1px solid #eeeeee;
+
+    font-size: 17px;
+}
+
+
+.farm-details strong {
+    color: #1B3A57;
+
+    font-weight: 700;
+}
+
+
+.farm-details span {
+    color: #555;
+
+    text-align: right;
+}
+
+
+/* =========================
+   Farm Card Footer
+========================= */
+
+.farm-card-footer {
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 25px;
+}
+
+
+/* =========================
+   View Farm Button
+========================= */
+
+.view-farm-btn {
+    border: none;
+
+    background: #1976D2;
+
+    color: white;
+
+    padding: 12px 22px;
+
+    border-radius: 9px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.view-farm-btn:hover {
+    background: #1565C0;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   No Farm Message
+========================= */
+
+.no-farm {
+    text-align: center;
+
+    font-size: 24px;
+
+    color: #777;
+
+    margin-top: 80px;
+}
+
+
+/* =========================
+   Tablet Responsive
+========================= */
+
+@media (max-width: 1050px) {
+
+    .farm-grid {
+        grid-template-columns:
+            minmax(400px, 550px);
+    }
+
+}
+
+
+/* =========================
+   Mobile Responsive
+========================= */
+
+@media (max-width: 600px) {
+
+    .getfarm-header {
+        flex-direction: column;
+
+        gap: 20px;
+
+        padding: 0 20px;
+    }
+
+
+    .getfarm-header h1 {
+        font-size: 30px;
+    }
+
+
+    .getfarm-container {
+        padding: 25px 15px 50px;
+    }
+
+
+    .farm-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .farm-card {
+        padding: 22px;
+    }
+
+
+    .farm-card h3 {
+        font-size: 25px;
+    }
+
+
+    .farm-details p {
+        font-size: 15px;
+    }
+
+
+    .view-farm-btn {
+        width: 100%;
+    }
+
+}

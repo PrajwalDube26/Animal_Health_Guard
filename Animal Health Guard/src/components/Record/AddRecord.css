@@ -1,0 +1,70 @@
+.add-record-container {
+    min-height: 100vh;
+    background: #f5f7fb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.add-record-card {
+    width: 450px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 18px rgba(0,0,0,.15);
+}
+
+.add-record-card h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.add-record-card form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-record-card label {
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #444;
+}
+
+.add-record-card input,
+.add-record-card select,
+.add-record-card textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+}
+
+.add-record-card input:focus,
+.add-record-card select:focus,
+.add-record-card textarea:focus {
+    border-color: #4caf50;
+}
+
+.add-record-card textarea {
+    resize: vertical;
+}
+
+.add-record-card button {
+    margin-top: 25px;
+    padding: 12px;
+    background: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.add-record-card button:hover {
+    background: #388e3c;
+}
