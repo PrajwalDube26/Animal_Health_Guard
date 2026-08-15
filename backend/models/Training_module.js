@@ -20,14 +20,14 @@ const training_module_Schema = new mongoose.Schema({
     },
     category: {
         type: String,
-        enum: ['poultry', 'pig'],
+        enum: ['poultry', 'pig', 'dairy', 'goat', 'sheep', 'general', 'biosecurity'],
         required: true
     },
     language: {
         type: String,
         default: "English"
     }
-});
+}, { timestamps: true });
 
 const training_module_Model = mongoose.model("training_module", training_module_Schema);
 

@@ -4,7 +4,7 @@ export const FarmContext = createContext();
 
 export const FarmProvider = ({ children }) => {
   const BASE_URL = "http://localhost:5000/api/farm";
-  const [farms, setfarms] = useState([]);
+  const [farms, setFarms] = useState([]);
 
   // Create Farm
   const createFarm = async (
@@ -37,7 +37,7 @@ export const FarmProvider = ({ children }) => {
         return false;
       }
 
-      setfarms((prevFarms) => [...prevFarms, json.farm]);
+      setFarms((prevFarms) => [...prevFarms, json.farm]);
       return json.farm;
     } catch (error) {
       console.log(error);
@@ -57,15 +57,15 @@ export const FarmProvider = ({ children }) => {
 
       if (!response.ok) {
         console.log(json.message);
-        setfarms([]);
+        setFarms([]);
         return [];
       }
 
-      setfarms(json.farms || []);
+      setFarms(json.farms || []);
       return json.farms;
     } catch (error) {
       console.log(error);
-      setfarms([]);
+      setFarms([]);
       return [];
     }
   };
@@ -85,7 +85,7 @@ export const FarmProvider = ({ children }) => {
         return null;
       }
 
-      setfarms([json.farm]);
+      setFarms([json.farm]);
       return json.farm;
     } catch (error) {
       console.log(error);
@@ -125,7 +125,7 @@ export const FarmProvider = ({ children }) => {
         return false;
       }
 
-      setfarms((prevFarms) =>
+      setFarms((prevFarms) =>
         prevFarms.map((farm) => (farm._id === id ? json.farm : farm))
       );
       return json.farm;
@@ -150,7 +150,7 @@ export const FarmProvider = ({ children }) => {
         return false;
       }
 
-      setfarms((prevFarms) => prevFarms.filter((farm) => farm._id !== id));
+      setFarms((prevFarms) => prevFarms.filter((farm) => farm._id !== id));
       return true;
     } catch (error) {
       console.log(error);
@@ -167,7 +167,7 @@ export const FarmProvider = ({ children }) => {
         updateFarm,
         deleteFarm,
         farms,
-        setfarms,
+        setFarms,
       }}
     >
       {children}

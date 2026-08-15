@@ -74,12 +74,12 @@ const GetSingleFarm = () => {
                                 🗑 Delete Farm
                             </button>
 
-                            <button
-                                className="edit-btn"
-                                onClick={handleEditFarm}
+                            <Link
+                                className="action-link edit-btn"
+                                to={`/updatefarm/${id}`}
                             >
                                 ✏ Edit Farm
-                            </button>
+                            </Link>
 
                             <Link className="action-link add-btn" to={`/addrecord/${id}`}>
                                 ➕ Add Record

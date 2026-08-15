@@ -1,6 +1,7 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { RecordContext } from "../../context/RecordContext";
+import Updaterecord from "./Updaterecord";
 import "./GetRecord.css";
 
 const GetRecord = () => {
@@ -11,6 +12,8 @@ const GetRecord = () => {
         getRecordsByFarmId,
         deleteRecord,
     } = useContext(RecordContext);
+
+    const [editingRecord, setEditingRecord] = useState(null);
 
     useEffect(() => {
         getRecordsByFarmId(farmId);
@@ -78,18 +81,12 @@ const GetRecord = () => {
 
                             <div className="record-actions">
 
-                                {/* Future Edit Button */}
-
-                                {/*
                                 <button
                                     className="edit-btn"
-                                    onClick={() =>
-                                        navigate(`/editrecord/${farmId}/${record._id}`)
-                                    }
+                                    onClick={() => setEditingRecord(record)}
                                 >
                                     ✏ Edit
                                 </button>
-                                */}
 
                                 <button
                                     className="delete-btn"
@@ -118,6 +115,14 @@ const GetRecord = () => {
                 </div>
 
             )}
+
+            {/* Updaterecord Pop-up Modal */}
+            <Updaterecord
+                show={!!editingRecord}
+                record={editingRecord}
+                farmId={farmId}
+                onClose={() => setEditingRecord(null)}
+            />
 
         </div>
     );

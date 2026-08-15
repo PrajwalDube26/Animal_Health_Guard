@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from "../../context/UserContext";
 import "./featchuser.css";
 
 const FeatchUser = () => {
-
     const { getUser, user_detail, Logout } = useContext(UserContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         getUser();
@@ -37,11 +37,11 @@ const FeatchUser = () => {
                 <div className="profile-header">
 
                     <div className="profile-avatar">
-                        {getInitials(user_detail.name)}
+                        {getInitials(user_detail?.name)}
                     </div>
 
                     <h2 className="profile-name">
-                        {user_detail.name}
+                        {user_detail?.name || "User"}
                     </h2>
 
                     <p className="profile-role">
@@ -60,7 +60,7 @@ const FeatchUser = () => {
                         </span>
 
                         <span className="detail-value">
-                            {user_detail.email}
+                            {user_detail?.email || "Not Available"}
                         </span>
                     </div>
 
@@ -70,7 +70,7 @@ const FeatchUser = () => {
                         </span>
 
                         <span className="detail-value">
-                            {user_detail.phone}
+                            {user_detail?.phone || "Not Available"}
                         </span>
                     </div>
 
@@ -80,7 +80,7 @@ const FeatchUser = () => {
                         </span>
 
                         <span className="detail-value">
-                            {user_detail.location}
+                            {user_detail?.location || "Not Available"}
                         </span>
                     </div>
 
@@ -90,7 +90,7 @@ const FeatchUser = () => {
                         </span>
 
                         <span className="detail-value">
-                            {formatDate(user_detail.createdAt)}
+                            {formatDate(user_detail?.createdAt)}
                         </span>
                     </div>
 
@@ -100,7 +100,7 @@ const FeatchUser = () => {
                         </span>
 
                         <span className="detail-value">
-                            {user_detail._id}
+                            {user_detail?._id || "Not Available"}
                         </span>
                     </div>
 
@@ -110,7 +110,7 @@ const FeatchUser = () => {
                         </span>
 
                         <span className="detail-value">
-                            <button onClick={Logout} >
+                            <button onClick={Logout} className="action-btn secondary" style={{ padding: "0.4rem 0.8rem", fontSize: "0.85rem" }}>
                                 Logout
                             </button>
                         </span>
@@ -122,13 +122,13 @@ const FeatchUser = () => {
 
                 <div className="profile-actions">
 
-                    <button className="action-btn primary">
+                    <Link to="/updateuser" className="action-btn primary" style={{ textDecoration: "none", textAlign: "center" }}>
                         Edit Profile
-                    </button>
+                    </Link>
 
-                    <button className="action-btn secondary">
+                    <Link to="/getfarm" className="action-btn secondary" style={{ textDecoration: "none", textAlign: "center" }}>
                         My Farms
-                    </button>
+                    </Link>
 
                 </div>
 
@@ -139,3 +139,4 @@ const FeatchUser = () => {
 };
 
 export default FeatchUser;
+

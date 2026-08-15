@@ -6,27 +6,41 @@ export const UserAlertProvider = ({ children }) => {
   const BASE_URL = "http://localhost:5000/api/User_Alert";
   const [userAlerts, setUserAlerts] = useState([]);
 
-  // Assign/Create User Alert
+  // Create User Alert / Mark as Read
   const createUserAlert = async (alertId) => {
     try {
       const response = await fetch(`${BASE_URL}/create_User_Alert/${alertId}`, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         credentials: "include",
+        body: JSON.stringify({ alertId }),
       });
 
       const json = await response.json();
 
       if (!response.ok) {
-        alert(json.message);
-        return false;
+        // If already marked as read, still return informative state
+        if (response.status === 409) {
+          if (json.userAlert) {
+            setUserAlerts((prev) => {
+              const exists = prev.some(
+                (item) => (item.alertId?._id || item.alertId) === alertId
+              );
+              return exists ? prev : [...prev, json.userAlert];
+            });
+          }
+        }
+        return { success: false, message: json.message, status: response.status };
       }
 
       const created = json.userAlert || json;
       setUserAlerts((prev) => [...prev, created]);
-      return created;
+      return { success: true, userAlert: created };
     } catch (error) {
       console.log(error);
-      return false;
+      return { success: false, message: error.message };
     }
   };
 
@@ -101,10 +115,10 @@ export const UserAlertProvider = ({ children }) => {
     }
   };
 
-  // Delete user alert by alertId
-  const deleteUserAlertByAlertId = async (alertId) => {
+  // Delete user alert by alertId / unmark as read
+  const unmarkAlertAsRead = async (alertId) => {
     try {
-      const response = await fetch(`${BASE_URL}/delete_User_Alert_By_alertId/${alertId}`, {
+      const response = await fetch(`${BASE_URL}/delete_user_alert/${alertId}`, {
         method: "DELETE",
         credentials: "include",
       });
@@ -112,18 +126,27 @@ export const UserAlertProvider = ({ children }) => {
       const json = await response.json();
 
       if (!response.ok) {
-        alert(json.message);
         return false;
       }
 
       setUserAlerts((prev) =>
-        prev.filter((item) => item.alertId !== alertId && item._id !== alertId)
+        prev.filter(
+          (item) =>
+            (item.alertId?._id || item.alertId) !== alertId && item._id !== alertId
+        )
       );
       return true;
     } catch (error) {
       console.log(error);
       return false;
     }
+  };
+
+  // Helper function to check if an alert is read
+  const isAlertRead = (alertId) => {
+    return userAlerts.some(
+      (item) => (item.alertId?._id || item.alertId) === alertId
+    );
   };
 
   return (
@@ -133,7 +156,8 @@ export const UserAlertProvider = ({ children }) => {
         getUserAlertByUserId,
         getUserAlertByAlertId,
         deleteUserAlertByUserId,
-        deleteUserAlertByAlertId,
+        unmarkAlertAsRead,
+        isAlertRead,
         userAlerts,
         setUserAlerts,
       }}
@@ -142,3 +166,5 @@ export const UserAlertProvider = ({ children }) => {
     </UserAlertContext.Provider>
   );
 };
+
+export default UserAlertProvider;

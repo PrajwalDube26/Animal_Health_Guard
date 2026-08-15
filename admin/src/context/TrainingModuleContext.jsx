@@ -20,7 +20,7 @@ export const TrainingModuleProvider = ({ children }) => {
           description,
           content,
           category,
-          language,
+          language: language || "English",
         }),
       });
 
@@ -37,6 +37,32 @@ export const TrainingModuleProvider = ({ children }) => {
     } catch (error) {
       console.log(error);
       return false;
+    }
+  };
+
+  // Get training modules created by logged-in Admin
+  const getTrainingModuleByAdminId = async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/getTraningModuleByAdminID`, {
+        method: "GET",
+        credentials: "include",
+      });
+
+      const json = await response.json();
+
+      if (!response.ok) {
+        console.log(json.message);
+        setTrainingModules([]);
+        return [];
+      }
+
+      const list = json.TraningModule || json.trainingModules || [];
+      setTrainingModules(list);
+      return list;
+    } catch (error) {
+      console.log(error);
+      setTrainingModules([]);
+      return [];
     }
   };
 
@@ -62,7 +88,7 @@ export const TrainingModuleProvider = ({ children }) => {
     }
   };
 
-  // Get all training modules
+  // Get all training modules (Public)
   const getAllTrainingModules = async () => {
     try {
       const response = await fetch(`${BASE_URL}/getAllTraningModule`, {
@@ -125,7 +151,7 @@ export const TrainingModuleProvider = ({ children }) => {
           description,
           content,
           category,
-          language,
+          language: language || "English",
         }),
       });
 
@@ -151,6 +177,8 @@ export const TrainingModuleProvider = ({ children }) => {
     <TrainingModuleContext.Provider
       value={{
         createTrainingModule,
+        getTrainingModuleByAdminId,
+        getTraningModuleByAdminID: getTrainingModuleByAdminId,
         getTrainingModuleById,
         getAllTrainingModules,
         deleteTrainingModule,
@@ -163,3 +191,5 @@ export const TrainingModuleProvider = ({ children }) => {
     </TrainingModuleContext.Provider>
   );
 };
+
+export default TrainingModuleProvider;

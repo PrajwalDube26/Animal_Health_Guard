@@ -16,7 +16,7 @@ const Navbar = () => {
                             <Link to="/showallalert">Alert</Link>
                         </button>
                         <button>
-                            <Link to="/signup">Training</Link>
+                            <Link to="/getalltrainingmodule">Training</Link>
                         </button>
                         <button>
                             <Link to="/profile">Profile</Link>

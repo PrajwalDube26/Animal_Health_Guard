@@ -6,31 +6,44 @@ export const UserTrainingProvider = ({ children }) => {
   const BASE_URL = "http://localhost:5000/api/user_traning";
   const [userTrainings, setUserTrainings] = useState([]);
 
-  // Assign/Create User Training
+  // Enroll / Create User Training
   const createUserTraining = async (traningId) => {
     try {
       const response = await fetch(`${BASE_URL}/create_user_traning/${traningId}`, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         credentials: "include",
+        body: JSON.stringify({ traningId }),
       });
 
       const json = await response.json();
 
       if (!response.ok) {
-        alert(json.message);
-        return false;
+        if (response.status === 409) {
+          if (json.userTraning) {
+            setUserTrainings((prev) => {
+              const exists = prev.some(
+                (item) => (item.traningId?._id || item.traningId) === traningId
+              );
+              return exists ? prev : [...prev, json.userTraning];
+            });
+          }
+        }
+        return { success: false, message: json.message, status: response.status };
       }
 
       const created = json.userTraning || json.userTraining || json;
       setUserTrainings((prev) => [...prev, created]);
-      return created;
+      return { success: true, userTraining: created };
     } catch (error) {
       console.log(error);
-      return false;
+      return { success: false, message: error.message };
     }
   };
 
-  // Get User Training by logged-in User ID
+  // Get User Training assignments for logged-in user
   const getUserTrainingByUserId = async () => {
     try {
       const response = await fetch(`${BASE_URL}/get_user_traning`, {
@@ -101,8 +114,8 @@ export const UserTrainingProvider = ({ children }) => {
     }
   };
 
-  // Delete User Training by training ID
-  const deleteUserTrainingByTrainingId = async (traningId) => {
+  // Unenroll / Delete specific User Training by training ID
+  const unenrollUserTraining = async (traningId) => {
     try {
       const response = await fetch(`${BASE_URL}/delete_user_traning/${traningId}`, {
         method: "DELETE",
@@ -112,12 +125,15 @@ export const UserTrainingProvider = ({ children }) => {
       const json = await response.json();
 
       if (!response.ok) {
-        alert(json.message);
         return false;
       }
 
       setUserTrainings((prev) =>
-        prev.filter((item) => item.traningId !== traningId && item._id !== traningId)
+        prev.filter(
+          (item) =>
+            (item.traningId?._id || item.traningId) !== traningId &&
+            item._id !== traningId
+        )
       );
       return true;
     } catch (error) {
@@ -126,14 +142,26 @@ export const UserTrainingProvider = ({ children }) => {
     }
   };
 
+  // Helper method to check if user is enrolled in a training module
+  const isTrainingEnrolled = (traningId) => {
+    return userTrainings.some(
+      (item) => (item.traningId?._id || item.traningId) === traningId
+    );
+  };
+
   return (
     <UserTrainingContext.Provider
       value={{
         createUserTraining,
+        createUserTraning: createUserTraining,
         getUserTrainingByUserId,
+        getUserTraningByUserId: getUserTrainingByUserId,
         getUserTrainingByTrainingId,
         deleteUserTrainingByUserId,
-        deleteUserTrainingByTrainingId,
+        unenrollUserTraining,
+        deleteUserTrainingByTrainingId: unenrollUserTraining,
+        isTrainingEnrolled,
+        isTraningEnrolled: isTrainingEnrolled,
         userTrainings,
         setUserTrainings,
       }}
@@ -142,3 +170,5 @@ export const UserTrainingProvider = ({ children }) => {
     </UserTrainingContext.Provider>
   );
 };
+
+export default UserTrainingProvider;

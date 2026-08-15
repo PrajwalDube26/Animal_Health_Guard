@@ -10,7 +10,8 @@ export const AdminProvider = ({ children }) => {
     name: "Admin",
     email: "admin@example.com",
     phone: "",
-    location: ""
+    district: "",
+    location: "",
   });
 
   const checkAdminLogin = async () => {
@@ -37,7 +38,7 @@ export const AdminProvider = ({ children }) => {
   }, []);
 
   // Admin Signup
-  const adminSignup = async (name, email, password, phone, location) => {
+  const adminSignup = async (name, email, password, phone, district, location) => {
     try {
       const response = await fetch(`${BASE_URL}/Signup`, {
         method: "POST",
@@ -50,6 +51,7 @@ export const AdminProvider = ({ children }) => {
           email,
           password,
           phone,
+          district,
           location,
         }),
       });
@@ -127,7 +129,7 @@ export const AdminProvider = ({ children }) => {
   };
 
   // Update Admin Profile
-  const updateAdmin = async (name, phone, location) => {
+  const updateAdmin = async (name, phone, district, location) => {
     try {
       const response = await fetch(`${BASE_URL}/edit_admin`, {
         method: "PUT",
@@ -138,6 +140,7 @@ export const AdminProvider = ({ children }) => {
         body: JSON.stringify({
           name,
           phone,
+          district,
           location,
         }),
       });
@@ -176,6 +179,7 @@ export const AdminProvider = ({ children }) => {
         name: "Admin",
         email: "admin@example.com",
         phone: "",
+        district: "",
         location: "",
       });
 
