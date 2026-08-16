@@ -17,8 +17,10 @@ const Farm_Assignment_route = require('./router/Farm_Assignment_manage');
 require('dotenv').config();
 
 const mongoose = require('mongoose');
+const mongoURI = process.env.MONGO_URI;
+const port = process.env.PORT || 5000;
 
-mongoose.connect("mongodb://localhost:27017/animal")
+mongoose.connect(mongoURI)
   .then(() => { console.log("connection succesful to database") })
   .catch((err) => { console.log(err) });
 
@@ -48,6 +50,6 @@ app.use("/api/admin", admin_auth_router);
 app.use("/api/User_Alert", User_Alert_route);
 app.use("/api/Farm_Assignment", Farm_Assignment_route);
 
-app.listen(5000, () => {
-  console.log(`listening at port 5000`)
+app.listen(port, () => {
+  console.log(`listening at port ${port}`)
 });
