@@ -106,15 +106,6 @@ const Featchadmin = () => {
           <Link to="/updateadmin" className="action-btn primary">
             ✏ Edit Profile
           </Link>
-          <Link to="/fetchadminalert" className="action-btn secondary">
-            📋 Alerts
-          </Link>
-          <Link to="/fetchadmintrainingmodule" className="action-btn secondary">
-            🎓 Training
-          </Link>
-          <Link to="/createalert" className="action-btn secondary">
-            🚨 Create Alert
-          </Link>
         </div>
       </div>
     </div>

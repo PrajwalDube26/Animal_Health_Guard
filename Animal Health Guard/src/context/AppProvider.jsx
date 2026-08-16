@@ -4,7 +4,6 @@ import { FarmProvider } from "./FarmContext";
 import { AlertProvider } from "./AlertContext";
 import { RecordProvider } from "./RecordContext";
 import { BioAssigProvider } from "./BioAssigContext";
-import { QueAnsProvider } from "./QueAnsContext";
 import { TrainingModuleProvider } from "./TrainingModuleContext";
 import { UserTrainingProvider } from "./UserTrainingContext";
 import { UserAlertProvider } from "./UserAlertContext";
@@ -18,17 +17,15 @@ export const AppProvider = ({ children }) => {
           <AlertProvider>
             <RecordProvider>
               <BioAssigProvider>
-                <QueAnsProvider>
-                  <TrainingModuleProvider>
-                    <UserTrainingProvider>
-                      <UserAlertProvider>
-                        <FarmAssignmentProvider>
-                          {children}
-                        </FarmAssignmentProvider>
-                      </UserAlertProvider>
-                    </UserTrainingProvider>
-                  </TrainingModuleProvider>
-                </QueAnsProvider>
+                <TrainingModuleProvider>
+                  <UserTrainingProvider>
+                    <UserAlertProvider>
+                      <FarmAssignmentProvider>
+                        {children}
+                      </FarmAssignmentProvider>
+                    </UserAlertProvider>
+                  </UserTrainingProvider>
+                </TrainingModuleProvider>
               </BioAssigProvider>
             </RecordProvider>
           </AlertProvider>

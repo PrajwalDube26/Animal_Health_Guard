@@ -20,6 +20,9 @@ import GetUserAlert from './components/UserAlert/GetUserAlert';
 import GetAllTraningModule from './components/TraningModule/GetAllTraningModule';
 import GetTraningModuleByID from './components/TraningModule/GetTraningModuleByID';
 import GetUserTraning from './components/UserTraning/GetUserTraning';
+import ShowAllBioAssig from './components/Bio_Assig/ShowAllBioAssig';
+import GetFarmAssignment from './components/FarmAssignment/GetFarmAssignment';
+import TakeFarmAssignment from './components/FarmAssignment/TakeFarmAssignment';
 
 import './App.css'
 
@@ -55,6 +58,21 @@ function App() {
         <Route path="/trainingmodules" element={<GetAllTraningModule />} />
         <Route path="/trainingmodule/:id" element={<GetTraningModuleByID />} />
         <Route path="/gettraningmodulebyid/:id" element={<GetTraningModuleByID />} />
+        <Route path="/showallbioassig" element={<ShowAllBioAssig />} />
+        <Route path="/showallbioassessment" element={<ShowAllBioAssig />} />
+        <Route path="/bioassig" element={<ShowAllBioAssig />} />
+        <Route path="/bioassessment" element={<ShowAllBioAssig />} />
+        <Route path="/biosecurity" element={<ShowAllBioAssig />} />
+        
+        {/* Farm Biosecurity Audits & Questionnaire */}
+        <Route path="/farmassignment" element={<GetFarmAssignment />} />
+        <Route path="/farmassignments" element={<GetFarmAssignment />} />
+        <Route path="/farmassignments/:farmId" element={<GetFarmAssignment />} />
+        <Route path="/takefarmassignment" element={<TakeFarmAssignment />} />
+        <Route path="/takefarmassignment/:farmId" element={<TakeFarmAssignment />} />
+        <Route path="/takefarmassignment/:farmId/:assignmentId" element={<TakeFarmAssignment />} />
+        <Route path="/farmassignment/take/:farmId" element={<TakeFarmAssignment />} />
+        <Route path="/farmassignment/take/:farmId/:assignmentId" element={<TakeFarmAssignment />} />
       </Routes>
     </AppProvider>
   )

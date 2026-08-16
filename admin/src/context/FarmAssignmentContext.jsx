@@ -6,21 +6,36 @@ export const FarmAssignmentProvider = ({ children }) => {
   const BASE_URL = "http://localhost:5000/api/Farm_Assignment";
   const [farmAssignments, setFarmAssignments] = useState([]);
 
-  // Create Farm-Assignment Relation
-  const createFarmAssignment = async (farmId, assignmentId) => {
+  // Create Farm-Assignment Relation / Response
+  const createFarmAssignment = async (farmId, assignmentId, farmer_answer, farmer_score_percentage, admin_answer) => {
     try {
+      let bodyData = {};
+      if (typeof farmer_answer === "object" && !Array.isArray(farmer_answer) && farmer_answer !== null) {
+        bodyData = farmer_answer;
+      } else {
+        bodyData = {
+          farmer_answer,
+          admin_answer,
+          farmer_score_percentage,
+        };
+      }
+
       const response = await fetch(
         `${BASE_URL}/create_farm_assignment/${farmId}/${assignmentId}`,
         {
           method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
           credentials: "include",
+          body: JSON.stringify(bodyData),
         }
       );
 
       const json = await response.json();
 
       if (!response.ok) {
-        alert(json.message);
+        alert(json.message || "Failed to create farm assignment");
         return false;
       }
 
@@ -30,6 +45,93 @@ export const FarmAssignmentProvider = ({ children }) => {
     } catch (error) {
       console.log(error);
       return false;
+    }
+  };
+
+  // Update Farm Assignment Response
+  const updateFarmAssignment = async (id, farmer_answer, farmer_score_percentage, admin_answer) => {
+    try {
+      let bodyData = {};
+      if (typeof farmer_answer === "object" && !Array.isArray(farmer_answer) && farmer_answer !== null) {
+        bodyData = farmer_answer;
+      } else {
+        bodyData = {
+          farmer_answer,
+          admin_answer,
+          farmer_score_percentage,
+        };
+      }
+
+      const response = await fetch(`${BASE_URL}/update_farm_assignment/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(bodyData),
+      });
+
+      const json = await response.json();
+
+      if (!response.ok) {
+        alert(json.message || "Failed to update farm assignment");
+        return false;
+      }
+
+      const updated = json.farmAssignment || json;
+      setFarmAssignments((prev) =>
+        prev.map((item) => (item._id === id ? updated : item))
+      );
+      return updated;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  };
+
+  // Get All Farm Assignments
+  const getAllFarmAssignments = async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/get_all_farm_assignments`, {
+        method: "GET",
+        credentials: "include",
+      });
+
+      const json = await response.json();
+
+      if (!response.ok) {
+        console.log(json.message);
+        return [];
+      }
+
+      const list = json.farmAssignments || [];
+      setFarmAssignments(list);
+      return list;
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
+  };
+
+  // Get Farm Assignment by ID
+  const getFarmAssignmentById = async (id) => {
+    try {
+      const response = await fetch(`${BASE_URL}/get_farm_assignment_by_id/${id}`, {
+        method: "GET",
+        credentials: "include",
+      });
+
+      const json = await response.json();
+
+      if (!response.ok) {
+        console.log(json.message);
+        return null;
+      }
+
+      return json.farmAssignment || json;
+    } catch (error) {
+      console.log(error);
+      return null;
     }
   };
 
@@ -52,12 +154,11 @@ export const FarmAssignmentProvider = ({ children }) => {
         return [];
       }
 
-      const list = json.farmAssignments || json.assignments || json.data || [];
+      const list = json.farmAssignment || json.farmAssignments || json.assignments || [];
       setFarmAssignments(list);
       return list;
     } catch (error) {
       console.log(error);
-      setFarmAssignments([]);
       return [];
     }
   };
@@ -80,7 +181,7 @@ export const FarmAssignmentProvider = ({ children }) => {
         return [];
       }
 
-      return json.farmAssignments || json.assignments || json.data || [];
+      return json.farmAssignment || json.farmAssignments || json.assignments || [];
     } catch (error) {
       console.log(error);
       return [];
@@ -105,7 +206,7 @@ export const FarmAssignmentProvider = ({ children }) => {
         return false;
       }
 
-      setFarmAssignments((prev) => prev.filter((item) => item.farmId !== farmId));
+      setFarmAssignments((prev) => prev.filter((item) => item.farmId?._id !== farmId && item.farmId !== farmId));
       return true;
     } catch (error) {
       console.log(error);
@@ -132,7 +233,7 @@ export const FarmAssignmentProvider = ({ children }) => {
       }
 
       setFarmAssignments((prev) =>
-        prev.filter((item) => item.assignmentId !== assignmentId)
+        prev.filter((item) => item.assignment_id?._id !== assignmentId && item.assignment_id !== assignmentId)
       );
       return true;
     } catch (error) {
@@ -161,7 +262,7 @@ export const FarmAssignmentProvider = ({ children }) => {
 
       setFarmAssignments((prev) =>
         prev.filter(
-          (item) => !(item.farmId === farmId && item.assignmentId === assignmentId)
+          (item) => !((item.farmId?._id === farmId || item.farmId === farmId) && (item.assignment_id?._id === assignmentId || item.assignment_id === assignmentId))
         )
       );
       return true;
@@ -175,6 +276,9 @@ export const FarmAssignmentProvider = ({ children }) => {
     <FarmAssignmentContext.Provider
       value={{
         createFarmAssignment,
+        updateFarmAssignment,
+        getAllFarmAssignments,
+        getFarmAssignmentById,
         getFarmAssignmentByFarmId,
         getFarmAssignmentByAssignmentId,
         deleteFarmAssignmentByFarmId,
@@ -188,3 +292,5 @@ export const FarmAssignmentProvider = ({ children }) => {
     </FarmAssignmentContext.Provider>
   );
 };
+
+export default FarmAssignmentProvider;

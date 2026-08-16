@@ -1,85 +1,107 @@
-/* AddFarm.css */
+/* AddFarm.css - Modern Dark Glassmorphic Theme */
 
 .addfarm-container {
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 30px;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 650px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  background: rgba(30, 27, 75, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 24px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f8fafc;
+  box-sizing: border-box;
 }
 
 .addfarm-title {
-    text-align: center;
-    color: #2e7d32;
-    margin-bottom: 25px;
-    font-weight: 700;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 2rem;
+  background: linear-gradient(135deg, #34d399, #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .addfarm-form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
 .form-group label {
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: #444;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .form-group input,
 .form-group select {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-    outline: none;
-    transition: all 0.3s ease;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: #f8fafc;
+  outline: none;
+  transition: all 0.25s ease;
+  font-family: inherit;
+}
+
+.form-group select option {
+  background: #1e1b4b;
+  color: #f8fafc;
 }
 
 .form-group input:focus,
 .form-group select:focus {
-    border-color: #2e7d32;
-    box-shadow: 0 0 5px rgba(46, 125, 50, 0.3);
+  border-color: #38bdf8;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
 }
 
 .submit-btn {
-    background: #2e7d32;
-    color: white;
-    border: none;
-    padding: 14px;
-    font-size: 17px;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
+  margin-top: 0.75rem;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  border: none;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
+  transition: all 0.25s ease;
 }
 
 .submit-btn:hover {
-    background: #1b5e20;
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(16, 185, 129, 0.45);
 }
 
 .submit-btn:active {
-    transform: scale(0.98);
+  transform: scale(0.98);
 }
 
 @media (max-width: 768px) {
-    .addfarm-container {
-        width: 90%;
-        padding: 20px;
-    }
+  .addfarm-container {
+    width: 90%;
+    padding: 1.75rem;
+    margin: 1.5rem auto;
+  }
 
-    .addfarm-title {
-        font-size: 24px;
-    }
-
-    .submit-btn {
-        font-size: 16px;
-    }
+  .addfarm-title {
+    font-size: 1.6rem;
+  }
 }

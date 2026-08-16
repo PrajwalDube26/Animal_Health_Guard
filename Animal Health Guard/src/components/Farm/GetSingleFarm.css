@@ -1,125 +1,171 @@
-.getfarm-container{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#e8f5e9,#f7fff8);
-    padding:40px 20px;
+/* GetSingleFarm.css - Modern Dark Glassmorphic Theme */
+
+.getfarm-container {
+  min-height: calc(100vh - 80px);
+  padding: 3rem 1.5rem 5rem;
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f8fafc;
+  box-sizing: border-box;
 }
 
-.farm-grid{
-    width:100%;
-    max-width:550px;
+.farm-grid {
+  width: 100%;
+  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
 }
 
-.farm-card{
-    background:#fff;
-    border-radius:18px;
-    padding:35px;
-    box-shadow:0 15px 35px rgba(0,0,0,.12);
-    border-top:6px solid #27ae60;
-    transition:.3s;
+.farm-card {
+  background: rgba(30, 27, 75, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 24px;
+  padding: 2.25rem;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
 }
 
-.farm-card:hover{
-    transform:translateY(-5px);
+.farm-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #10b981, #38bdf8, #818cf8);
 }
 
-.farm-card h3{
-    text-align:center;
-    font-size:34px;
-    color:#27ae60;
-    margin-bottom:25px;
+.farm-card h3 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 1.75rem;
+  background: linear-gradient(135deg, #34d399, #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.farm-details p{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    font-size:19px;
-    padding:12px 0;
-    border-bottom:1px solid #eee;
+.farm-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
 }
 
-.farm-details strong{
-    color:#2c3e50;
+.farm-details p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  padding: 0.85rem 1.1rem;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
 }
 
-.farm-actions{
-    margin-top:25px;
-    display:flex;
-    flex-direction:column;
-    gap:15px;
+.farm-details strong {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.farm-actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
 }
 
 .farm-actions button,
-.action-link{
-    padding:15px;
-    border:none;
-    border-radius:10px;
-    font-size:17px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s;
-    text-align:center;
-    text-decoration:none;
-    color:white;
+.action-link {
+  padding: 0.85rem 1rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-.edit-btn{
-    background:#3498db;
+.edit-btn {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
 }
 
-.edit-btn:hover{
-    background:#2980b9;
-    transform:translateY(-2px);
+.edit-btn:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.45);
 }
 
-.delete-btn{
-    background:#e74c3c;
+.delete-btn {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3);
 }
 
-.delete-btn:hover{
-    background:#c0392b;
-    transform:translateY(-2px);
+.delete-btn:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.45);
 }
 
-.add-btn{
-    background:#27ae60;
+.add-btn {
+  background: linear-gradient(135deg, #10b981, #059669);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
 }
 
-.add-btn:hover{
-    background:#1e8449;
-    transform:translateY(-2px);
+.add-btn:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.45);
 }
 
-.record-btn{
-    background:#8e44ad;
+.record-btn {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.3);
 }
 
-.record-btn:hover{
-    background:#6c3483;
-    transform:translateY(-2px);
+.record-btn:hover {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.45);
 }
 
-.no-farm{
-    text-align:center;
-    font-size:22px;
-    color:#777;
+.no-farm {
+  text-align: center;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 3rem;
+  background: rgba(30, 27, 75, 0.5);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
 }
 
-@media(max-width:600px){
+@media (max-width: 600px) {
+  .farm-card {
+    padding: 1.5rem;
+  }
 
-.farm-card{
-    padding:25px;
-}
+  .farm-card h3 {
+    font-size: 1.6rem;
+  }
 
-.farm-card h3{
-    font-size:28px;
-}
-
-.farm-details p{
-    font-size:16px;
-}
-
+  .farm-actions {
+    grid-template-columns: 1fr;
+  }
 }

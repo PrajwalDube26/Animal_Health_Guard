@@ -40,10 +40,10 @@ const Navbar = () => {
               🎓 Training
             </Link>
             <Link
-              to="/createalert"
-              className={`admin-nav-btn primary ${isActive("/createalert") ? "active" : ""}`}
+              to="/fetchadminbioassig"
+              className={`admin-nav-btn ${isActive("/fetchadminbioassig") ? "active" : ""}`}
             >
-              🚨 Create Alert
+              🛡️ Biosecurity
             </Link>
             <Link
               to="/profile"

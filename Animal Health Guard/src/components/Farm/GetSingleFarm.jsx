@@ -89,6 +89,10 @@ const GetSingleFarm = () => {
                                 📋 Show Farm Records
                             </Link>
 
+                            <Link className="action-link add-btn" to={`/farmassignments/${id}`}>
+                                🛡️ Biosecurity Audits
+                            </Link>
+
                         </div>
 
                     </div>

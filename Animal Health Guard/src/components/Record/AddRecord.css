@@ -1,70 +1,124 @@
+/* AddRecord.css - Modern Dark Glassmorphic Theme */
+
 .add-record-container {
-    min-height: 100vh;
-    background: #f5f7fb;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
+  min-height: calc(100vh - 80px);
+  padding: 3rem 1.5rem;
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f8fafc;
+  box-sizing: border-box;
 }
 
 .add-record-card {
-    width: 450px;
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 5px 18px rgba(0,0,0,.15);
+  width: 100%;
+  max-width: 520px;
+  background: rgba(30, 27, 75, 0.75);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 2.25rem;
+  border-radius: 24px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.add-record-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #34d399, #38bdf8);
 }
 
 .add-record-card h2 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #333;
+  text-align: center;
+  margin: 0 0 1.75rem;
+  font-size: 1.85rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #34d399, #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .add-record-card form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
 }
 
 .add-record-card label {
-    margin-top: 15px;
-    margin-bottom: 6px;
-    font-weight: bold;
-    color: #444;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: -0.5rem;
 }
 
 .add-record-card input,
 .add-record-card select,
 .add-record-card textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 15px;
-    outline: none;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: #f8fafc;
+  outline: none;
+  transition: all 0.25s ease;
+  font-family: inherit;
+}
+
+.add-record-card select option {
+  background: #1e1b4b;
+  color: #f8fafc;
 }
 
 .add-record-card input:focus,
 .add-record-card select:focus,
 .add-record-card textarea:focus {
-    border-color: #4caf50;
+  border-color: #38bdf8;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
 }
 
 .add-record-card textarea {
-    resize: vertical;
+  resize: vertical;
+  min-height: 100px;
 }
 
 .add-record-card button {
-    margin-top: 25px;
-    padding: 12px;
-    background: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 17px;
-    cursor: pointer;
-    transition: .3s;
+  margin-top: 0.75rem;
+  padding: 0.85rem;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
+  transition: all 0.25s ease;
 }
 
 .add-record-card button:hover {
-    background: #388e3c;
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(16, 185, 129, 0.45);
+}
+
+@media (max-width: 600px) {
+  .add-record-card {
+    padding: 1.5rem;
+  }
+
+  .add-record-card h2 {
+    font-size: 1.5rem;
+  }
 }

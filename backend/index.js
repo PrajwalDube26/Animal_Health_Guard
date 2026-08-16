@@ -8,7 +8,6 @@ const farm_router = require("./router/farm_manage");
 const alert_route = require('./router/Alert_manage');
 const record_route = require('./router/Record_manage');
 const bio_assign_route = require('./router/Bio_assig_manage');
-const que_ans_route = require('./router/que_ans_manage');
 const traning_module_route = require('./router/traning_module_manage');
 const user_traning_route = require('./router/User_traning_manage');
 const admin_auth_router = require("./router/Admin_Management");
@@ -24,7 +23,6 @@ mongoose.connect("mongodb://localhost:27017/animal")
   .catch((err) => { console.log(err) });
 
 const corsOptions = {
-  // origin: "https://blog-space-drltb03l8-prajwal-dube26.vercel.app",
   origin: [
     "http://localhost:5173",
     "http://localhost:5174",
@@ -44,13 +42,11 @@ app.use("/api/farm", farm_router);
 app.use("/api/alert", alert_route);
 app.use("/api/record", record_route);
 app.use("/api/bio_assig", bio_assign_route);
-app.use("/api/que_ans", que_ans_route);
 app.use("/api/traning_module", traning_module_route);
 app.use("/api/user_traning", user_traning_route);
 app.use("/api/admin", admin_auth_router);
 app.use("/api/User_Alert", User_Alert_route);
 app.use("/api/Farm_Assignment", Farm_Assignment_route);
-
 
 app.listen(5000, () => {
   console.log(`listening at port 5000`)

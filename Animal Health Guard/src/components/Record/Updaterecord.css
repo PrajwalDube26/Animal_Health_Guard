@@ -1,4 +1,4 @@
-/* Updaterecord.css */
+/* Updaterecord.css - Premium Glassmorphic Theme */
 
 .modal-backdrop-record {
   position: fixed;
@@ -6,8 +6,9 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(8px);
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   z-index: 1050;
   animation: fadeInRecordBackdrop 0.25s ease-out forwards;
 }
@@ -24,35 +25,47 @@
   z-index: 1055;
   overflow-x: hidden;
   overflow-y: auto;
-  padding: 1rem;
+  padding: 1.5rem;
   box-sizing: border-box;
 }
 
 .update-record-dialog {
   width: 100%;
-  max-width: 500px;
+  max-width: 540px;
   margin: auto;
   z-index: 1060;
 }
 
 .update-record-modal {
-  background: #ffffff;
-  border-radius: 20px;
-  border: 1px solid rgba(46, 125, 50, 0.2);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25), 0 0 25px rgba(46, 125, 50, 0.15);
-  border-top: 6px solid #2E7D32;
+  background: rgba(30, 27, 75, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+  position: relative;
   overflow: hidden;
   animation: slideUpRecordModal 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: all 0.3s ease;
+  color: #f8fafc;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.update-record-modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #34d399, #38bdf8);
 }
 
 .update-record-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  padding: 1.5rem 1.75rem 1.25rem;
-  border-bottom: 1px solid #eef2f5;
-  background: linear-gradient(135deg, rgba(46, 125, 50, 0.06), rgba(27, 94, 32, 0.02));
+  align-items: center;
+  padding: 1.75rem 2rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .modal-title-wrapper {
@@ -60,55 +73,57 @@
 }
 
 .update-record-header .modal-title {
-  font-size: 1.45rem;
-  font-weight: 700;
-  color: #1B5E20;
+  font-size: 1.55rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #34d399, #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin: 0;
 }
 
 .update-record-header .modal-subtitle {
-  font-size: 0.85rem;
-  color: #64748b;
-  margin-top: 0.25rem;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 0.3rem;
   margin-bottom: 0;
 }
 
 .btn-close-record {
-  background: #f1f5f9;
-  border: 1px solid #cbd5e1;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 50%;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #64748b;
-  font-size: 1rem;
+  color: #f8fafc;
+  font-size: 1.1rem;
   cursor: pointer;
   transition: all 0.2s ease;
   line-height: 1;
 }
 
 .btn-close-record:hover {
-  background: #fee2e2;
-  color: #ef4444;
-  border-color: #fca5a5;
+  background: rgba(239, 68, 68, 0.25);
+  color: #fca5a5;
+  border-color: rgba(239, 68, 68, 0.5);
   transform: rotate(90deg);
 }
 
 .loading-state-record {
   padding: 3rem 2rem;
   text-align: center;
-  color: #64748b;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .spinner-record {
-  width: 38px;
-  height: 38px;
-  border: 4px solid #e2e8f0;
-  border-top-color: #2E7D32;
+  width: 42px;
+  height: 42px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #38bdf8;
   border-radius: 50%;
-  margin: 0 auto 1rem;
+  margin: 0 auto 1.25rem;
   animation: spinRecord 0.8s linear infinite;
 }
 
@@ -118,175 +133,165 @@
   }
 }
 
+.custom-alert-record {
+  margin: 1.25rem 2rem 0;
+  padding: 0.85rem 1.15rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.custom-alert-record.alert-danger {
+  background: rgba(239, 68, 68, 0.18);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+}
+
+.custom-alert-record.alert-success {
+  background: rgba(16, 185, 129, 0.18);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #6ee7b7;
+}
+
 .update-record-body {
-  padding: 1.5rem 1.75rem;
-  text-align: left;
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
 .form-group-record {
-  margin-bottom: 1.25rem;
   display: flex;
   flex-direction: column;
+  gap: 0.45rem;
   text-align: left;
 }
 
 .form-label-record {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #1e293b;
-  margin-bottom: 0.4rem;
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.required-star {
-  color: #ef4444;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .form-control-record {
   width: 100%;
-  padding: 0.75rem 1rem;
-  font-size: 0.95rem;
-  background: #f8fafc;
-  border: 1.5px solid #cbd5e1;
+  padding: 0.8rem 1.1rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 12px;
-  color: #0f172a;
+  font-size: 0.95rem;
+  color: #ffffff;
   outline: none;
   transition: all 0.25s ease;
-  box-sizing: border-box;
   font-family: inherit;
+  box-sizing: border-box;
+}
+
+.form-control-record::placeholder {
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .form-control-record:focus {
-  background: #ffffff;
-  border-color: #2E7D32;
-  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+  border-color: #38bdf8;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+}
+
+.form-control-record option {
+  background: #1e1b4b;
+  color: #f8fafc;
+  padding: 0.5rem;
 }
 
 .textarea-record {
   resize: vertical;
-  min-height: 90px;
-}
-
-.custom-alert-record {
-  padding: 0.8rem 1.1rem;
-  border-radius: 12px;
-  font-size: 0.88rem;
-  margin-bottom: 1.25rem;
-  animation: fadeInRecord 0.3s ease;
-}
-
-.custom-alert-record.alert-danger {
-  background: #fef2f2;
-  border: 1px solid #fecaca;
-  color: #b91c1c;
-}
-
-.custom-alert-record.alert-success {
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  color: #15803d;
+  min-height: 110px;
 }
 
 .update-record-footer {
   display: flex;
   justify-content: flex-end;
-  gap: 0.75rem;
-  padding: 1.25rem 1.75rem;
-  border-top: 1px solid #eef2f5;
-  background: #f8fafc;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1.25rem 2rem 1.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .btn-record {
-  padding: 0.7rem 1.4rem;
-  font-size: 0.92rem;
-  font-weight: 600;
+  padding: 0.75rem 1.5rem;
   border-radius: 12px;
-  border: none;
+  font-size: 0.95rem;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.25s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.4rem;
+  border: none;
+  font-family: inherit;
 }
 
 .btn-record-cancel {
-  background: #e2e8f0;
-  color: #334155;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #f8fafc;
 }
 
-.btn-record-cancel:hover:not(:disabled) {
-  background: #cbd5e1;
-  color: #0f172a;
+.btn-record-cancel:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .btn-record-save {
-  background: linear-gradient(135deg, #2E7D32, #388E3C);
+  background: linear-gradient(135deg, #10b981, #059669);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(46, 125, 50, 0.3);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
 }
 
-.btn-record-save:hover:not(:disabled) {
-  background: linear-gradient(135deg, #1B5E20, #2E7D32);
-  box-shadow: 0 6px 18px rgba(46, 125, 50, 0.4);
-  transform: translateY(-1px);
+.btn-record-save:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(16, 185, 129, 0.45);
 }
 
 .btn-record:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
 }
 
 @keyframes fadeInRecordBackdrop {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slideUpRecordModal {
   from {
     opacity: 0;
-    transform: translateY(20px) scale(0.97);
+    transform: translateY(25px) scale(0.97);
   }
-
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
 
-@keyframes fadeInRecord {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
+@media (max-width: 600px) {
+  .update-record-header {
+    padding: 1.25rem 1.25rem 1rem;
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 576px) {
-  .update-record-dialog {
-    margin: 0.5rem;
-    max-width: calc(100% - 1rem);
-  }
-
-  .update-record-header,
-  .update-record-body,
-  .update-record-footer {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+  .update-record-body {
+    padding: 1.25rem;
   }
 
   .update-record-footer {
-    flex-direction: column;
+    padding: 1rem 1.25rem 1.5rem;
+    flex-direction: column-reverse;
   }
 
   .btn-record {

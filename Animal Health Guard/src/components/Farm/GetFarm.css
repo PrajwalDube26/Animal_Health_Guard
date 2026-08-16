@@ -1,302 +1,595 @@
-/* =========================
-   Header
-========================= */
+/* GetFarm.css - Premium Glassmorphic Theme matching ShowAllBioAssig */
 
-.getfarm-header {
-    max-width: 1100px;
-    margin: 35px auto;
-    padding: 0 30px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    /* Space between heading and button */
-    gap: 50px;
+.user-farm-page {
+  min-height: calc(100vh - 80px);
+  padding: 2.5rem 2rem;
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f8fafc;
+  box-sizing: border-box;
 }
 
-.getfarm-header h1 {
-    font-size: 38px;
-    color: #1B5E20;
-    margin: 0;
-    font-weight: 700;
+.user-farm-container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-
-/* =========================
-   Add Farm Button
-========================= */
-
-.add-farm-btn {
-    text-decoration: none;
-
-    background: #2E7D32;
-    color: white;
-
-    padding: 16px 28px;
-    border-radius: 10px;
-
-    font-size: 17px;
-    font-weight: 600;
-
-    transition: 0.3s;
+/* Hero */
+.user-farm-hero {
+  text-align: left;
+  margin-bottom: 2rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.add-farm-btn:hover {
-    background: #1B5E20;
-    transform: translateY(-2px);
+.farm-hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #34d399;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
 }
 
-
-/* =========================
-   Main Container
-========================= */
-
-.getfarm-container {
-    min-height: 100vh;
-
-    background: linear-gradient(
-        135deg,
-        #eef8f0,
-        #ffffff
-    );
-
-    /* Reduced top empty space */
-    padding: 35px 40px 60px;
+.farm-hero-main-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
-
-/* =========================
-   Farm Grid
-========================= */
-
-.farm-grid {
-    max-width: 1100px;
-    margin: 0 auto;
-
-    display: grid;
-
-    /* Two wider cards */
-    grid-template-columns: repeat(2, minmax(450px, 500px));
-
-    justify-content: center;
-
-    gap: 35px;
+.user-farm-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem 0;
+  background: linear-gradient(135deg, #34d399, #38bdf8, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
-
-/* =========================
-   Farm Card
-========================= */
-
-.farm-card {
-    width: 100%;
-    box-sizing: border-box;
-
-    background: white;
-
-    border-radius: 20px;
-
-    padding: 30px 35px;
-
-    border-top: 6px solid #2E7D32;
-
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-
-    cursor: pointer;
-
-    transition:
-        transform 0.3s,
-        box-shadow 0.3s;
+.user-farm-title span {
+  -webkit-text-fill-color: initial;
 }
 
-
-/* Farm Card Hover */
-
-.farm-card:hover {
-    transform: translateY(-7px);
-
-    box-shadow:
-        0 18px 38px
-        rgba(0, 0, 0, 0.18);
+.user-farm-subtitle {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 750px;
+  line-height: 1.5;
+  margin: 0;
 }
 
-
-/* =========================
-   Farm Name
-========================= */
-
-.farm-card h3 {
-    color: #2E7D32;
-
-    font-size: 30px;
-
-    text-align: center;
-
-    margin: 0 0 20px;
-
-    /* Prevent unnecessary line breaks */
-    word-break: normal;
+.btn-add-farm-hero {
+  text-decoration: none;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  padding: 0.75rem 1.6rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  white-space: nowrap;
 }
 
-
-/* =========================
-   Farm Details
-========================= */
-
-.farm-details p {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    padding: 14px 0;
-
-    margin: 0;
-
-    border-bottom:
-        1px solid #eeeeee;
-
-    font-size: 17px;
+.btn-add-farm-hero:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(16, 185, 129, 0.45);
+  color: #ffffff;
 }
 
-
-.farm-details strong {
-    color: #1B3A57;
-
-    font-weight: 700;
+/* Quick Metrics */
+.user-farm-metrics {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
 }
 
-
-.farm-details span {
-    color: #555;
-
-    text-align: right;
+.farm-metric-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-
-/* =========================
-   Farm Card Footer
-========================= */
-
-.farm-card-footer {
-    display: flex;
-
-    justify-content: flex-end;
-
-    margin-top: 25px;
+.farm-metric-pill:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
 }
 
-
-/* =========================
-   View Farm Button
-========================= */
-
-.view-farm-btn {
-    border: none;
-
-    background: #1976D2;
-
-    color: white;
-
-    padding: 12px 22px;
-
-    border-radius: 9px;
-
-    font-size: 16px;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition: 0.3s;
+.farm-metric-pill.active {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: #38bdf8;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
 }
 
-
-.view-farm-btn:hover {
-    background: #1565C0;
-
-    transform: translateY(-2px);
+.farm-metric-pill.dairy.active {
+  background: rgba(16, 185, 129, 0.25);
+  border-color: #10b981;
 }
 
-
-/* =========================
-   No Farm Message
-========================= */
-
-.no-farm {
-    text-align: center;
-
-    font-size: 24px;
-
-    color: #777;
-
-    margin-top: 80px;
+.farm-metric-pill.poultry.active {
+  background: rgba(245, 158, 11, 0.25);
+  border-color: #f59e0b;
 }
 
-
-/* =========================
-   Tablet Responsive
-========================= */
-
-@media (max-width: 1050px) {
-
-    .farm-grid {
-        grid-template-columns:
-            minmax(400px, 550px);
-    }
-
+.farm-metric-pill.goat.active {
+  background: rgba(168, 85, 247, 0.25);
+  border-color: #a855f7;
 }
 
+.pill-num {
+  font-size: 1.15rem;
+  font-weight: 800;
+}
 
-/* =========================
-   Mobile Responsive
-========================= */
+.pill-txt {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+}
 
-@media (max-width: 600px) {
+.farm-metric-pill.total .pill-num {
+  color: #38bdf8;
+}
 
-    .getfarm-header {
-        flex-direction: column;
+.farm-metric-pill.dairy .pill-num {
+  color: #34d399;
+}
 
-        gap: 20px;
+.farm-metric-pill.poultry .pill-num {
+  color: #fbbf24;
+}
 
-        padding: 0 20px;
-    }
+.farm-metric-pill.goat .pill-num {
+  color: #c084fc;
+}
 
+/* Toolbar */
+.user-farm-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.25rem;
+  border-radius: 18px;
+  flex-wrap: wrap;
+}
 
-    .getfarm-header h1 {
-        font-size: 30px;
-    }
+.farm-search-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  align-items: center;
+}
 
+.search-ico {
+  position: absolute;
+  left: 1.1rem;
+  color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+}
 
-    .getfarm-container {
-        padding: 25px 15px 50px;
-    }
+.user-farm-search-input {
+  width: 100%;
+  padding: 0.7rem 2.5rem 0.7rem 2.8rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 0.92rem;
+  outline: none;
+  box-sizing: border-box;
+}
 
+.user-farm-search-input:focus {
+  border-color: #34d399;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.25);
+}
 
-    .farm-grid {
-        grid-template-columns: 1fr;
-    }
+.btn-clear-search {
+  position: absolute;
+  right: 0.85rem;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  cursor: pointer;
+}
 
+.btn-clear-search:hover {
+  color: #ffffff;
+}
 
-    .farm-card {
-        padding: 22px;
-    }
+.farm-filter-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
 
+.filter-title {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+}
 
-    .farm-card h3 {
-        font-size: 25px;
-    }
+.user-farm-select {
+  padding: 0.6rem 0.9rem;
+  background: rgba(30, 27, 75, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 0.88rem;
+  outline: none;
+}
 
+/* Loading & Empty */
+.user-farm-loading,
+.user-farm-empty {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 3.5rem 2rem;
+  text-align: center;
+}
 
-    .farm-details p {
-        font-size: 15px;
-    }
+.farm-spinner {
+  width: 44px;
+  height: 44px;
+  border: 3px solid rgba(52, 211, 153, 0.2);
+  border-top-color: #34d399;
+  border-radius: 50%;
+  animation: spinFarm 0.8s linear infinite;
+  margin: 0 auto 1.25rem;
+}
 
+@keyframes spinFarm {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
-    .view-farm-btn {
-        width: 100%;
-    }
+.empty-ico {
+  font-size: 3rem;
+  margin-bottom: 0.75rem;
+}
 
+.user-farm-empty h3 {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 0 0 0.5rem;
+}
+
+.user-farm-empty p {
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 1.5rem;
+}
+
+.btn-reset-filters,
+.btn-add-first-farm {
+  padding: 0.65rem 1.4rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.btn-reset-filters {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.btn-reset-filters:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-add-first-farm {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
+}
+
+.btn-add-first-farm:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-2px);
+}
+
+/* ========================================================
+   2-Column Responsive Grid (Identical to ShowAllBioAssig)
+======================================================== */
+.user-farm-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+/* Farm Card */
+.user-farm-card {
+  background: rgba(30, 27, 75, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.user-farm-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #34d399, #38bdf8);
+}
+
+.user-farm-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.15);
+}
+
+/* Card Top */
+.user-farm-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.85rem;
+}
+
+.farm-id-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Farm Type Badge Pills */
+.farm-badge-pill {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.farm-badge-pill.dairy {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.farm-badge-pill.poultry {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.farm-badge-pill.pig {
+  background: rgba(244, 114, 182, 0.2);
+  color: #f472b6;
+  border: 1px solid rgba(244, 114, 182, 0.4);
+}
+
+.farm-badge-pill.goat {
+  background: rgba(168, 85, 247, 0.2);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.4);
+}
+
+.farm-badge-pill.sheep {
+  background: rgba(147, 197, 253, 0.2);
+  color: #93c5fd;
+  border: 1px solid rgba(147, 197, 253, 0.4);
+}
+
+.farm-badge-pill.default {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f1f5f9;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Farm Card Title */
+.user-farm-card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0 0 1rem 0;
+}
+
+/* Stats / Details Box */
+.user-farm-stats-box {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1rem 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.stats-meter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 75px;
+  padding-right: 1rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.meter-val {
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: #34d399;
+  line-height: 1;
+}
+
+.meter-lbl {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  margin-top: 0.3rem;
+  letter-spacing: 0.5px;
+}
+
+.stats-details-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.stat-label {
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 500;
+}
+
+.stat-val {
+  color: #f8fafc;
+  font-weight: 600;
+}
+
+/* Card Actions Footer */
+.user-farm-card-footer {
+  display: flex;
+  gap: 0.65rem;
+  margin-top: auto;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-farm-action {
+  flex: 1;
+  padding: 0.55rem 0.85rem;
+  border-radius: 10px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  border: 1px solid transparent;
+}
+
+.btn-farm-action.view {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.3);
+  color: #38bdf8;
+}
+
+.btn-farm-action.view:hover {
+  background: rgba(56, 189, 248, 0.25);
+  border-color: #38bdf8;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-farm-action.records {
+  background: rgba(168, 85, 247, 0.12);
+  border-color: rgba(168, 85, 247, 0.3);
+  color: #c084fc;
+}
+
+.btn-farm-action.records:hover {
+  background: rgba(168, 85, 247, 0.25);
+  border-color: #c084fc;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-farm-action.audit {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #34d399;
+}
+
+.btn-farm-action.audit:hover {
+  background: rgba(16, 185, 129, 0.3);
+  border-color: #10b981;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  .user-farm-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .user-farm-page {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .user-farm-title {
+    font-size: 1.7rem;
+  }
+
+  .farm-hero-main-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .user-farm-card-footer {
+    flex-wrap: wrap;
+  }
 }
