@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const FarmContext = createContext();
 
 export const FarmProvider = ({ children }) => {
-  const BASE_URL = "http://localhost:5000/api/farm";
+  const BASE_URL = process.env.BASE_URL + "/farm";
   const [farms, setFarms] = useState([]);
 
   // Create Farm

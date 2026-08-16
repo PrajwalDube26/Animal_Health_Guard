@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const BioAssigContext = createContext();
 
 export const BioAssigProvider = ({ children }) => {
-  const BASE_URL = "http://localhost:5000/api/bio_assig";
+  const BASE_URL = process.env.BASE_URL + "/bio_assig";
   const [assignments, setAssignments] = useState([]);
 
   // Submit Assessment (Admin)

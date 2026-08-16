@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const UserTrainingContext = createContext();
 
 export const UserTrainingProvider = ({ children }) => {
-  const BASE_URL = "http://localhost:5000/api/user_traning";
+  const BASE_URL = process.env.BASE_URL + "/user_traning";
   const [userTrainings, setUserTrainings] = useState([]);
 
   // Assign/Create User Training
