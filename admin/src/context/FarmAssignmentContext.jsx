@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const FarmAssignmentContext = createContext();
 
 export const FarmAssignmentProvider = ({ children }) => {
-  const BASE_URL = process.env.BASE_URL + "/Farm_Assignment";
+  const BASE_URL = import.meta.env.VITE_BASE_URL + "/Farm_Assignment";
   const [farmAssignments, setFarmAssignments] = useState([]);
 
   // Create Farm-Assignment Relation / Response

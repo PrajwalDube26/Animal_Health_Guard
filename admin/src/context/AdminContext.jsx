@@ -3,7 +3,7 @@ import { createContext, useState, useEffect } from "react";
 export const AdminContext = createContext();
 
 export const AdminProvider = ({ children }) => {
-  const BASE_URL = "http://localhost:5000/api/admin";
+  const BASE_URL = import.meta.env.VITE_BASE_URL + "/admin";
 
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(0);
   const [adminDetail, setAdminDetail] = useState({

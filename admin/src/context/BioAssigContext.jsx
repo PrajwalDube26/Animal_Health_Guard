@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const BioAssigContext = createContext();
 
 export const BioAssigProvider = ({ children }) => {
-  const BASE_URL = process.env.BASE_URL + "/bio_assig";
+  const BASE_URL = import.meta.env.VITE_BASE_URL + "/bio_assig";
   const [assignments, setAssignments] = useState([]);
 
   // Submit Assessment (Admin)

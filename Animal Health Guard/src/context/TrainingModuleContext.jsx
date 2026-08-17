@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const TrainingModuleContext = createContext();
 
 export const TrainingModuleProvider = ({ children }) => {
-  const BASE_URL = "http://localhost:5000/api/traning_module";
+  const BASE_URL = import.meta.env.VITE_BASE_URL + "/traning_module";
   const [trainingModules, setTrainingModules] = useState([]);
 
   // Create training module (Admin)

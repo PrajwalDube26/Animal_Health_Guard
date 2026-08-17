@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const RecordContext = createContext();
 
 export const RecordProvider = ({ children }) => {
-  const BASE_URL = process.env.BASE_URL + "/record";
+  const BASE_URL = import.meta.env.VITE_BASE_URL + "/record";
   const [records, setrecords] = useState([]);
 
   // Create Record

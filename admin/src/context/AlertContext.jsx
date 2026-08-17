@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const AlertContext = createContext();
 
 export const AlertProvider = ({ children }) => {
-  const BASE_URL = "http://localhost:5000/api/alert";
+  const BASE_URL = import.meta.env.VITE_BASE_URL + "/alert";
   const [alerts, setalerts] = useState([]);
 
   // Create Alert (Admin)

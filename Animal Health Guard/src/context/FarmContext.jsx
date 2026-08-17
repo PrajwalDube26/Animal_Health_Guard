@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const FarmContext = createContext();
 
 export const FarmProvider = ({ children }) => {
-  const BASE_URL = process.env.BASE_URL + "/farm";
+  const BASE_URL = import.meta.env.VITE_BASE_URL + "/farm";
   const [farms, setFarms] = useState([]);
 
   // Create Farm

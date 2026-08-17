@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const UserTrainingContext = createContext();
 
 export const UserTrainingProvider = ({ children }) => {
-  const BASE_URL = process.env.BASE_URL + "/user_traning";
+  const BASE_URL = import.meta.env.VITE_BASE_URL + "/user_traning";
   const [userTrainings, setUserTrainings] = useState([]);
 
   // Enroll / Create User Training

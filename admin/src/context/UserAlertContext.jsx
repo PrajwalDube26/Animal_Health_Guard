@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const UserAlertContext = createContext();
 
 export const UserAlertProvider = ({ children }) => {
-  const BASE_URL = process.env.BASE_URL + "/User_Alert";
+  const BASE_URL = import.meta.env.VITE_BASE_URL + "/User_Alert";
   const [userAlerts, setUserAlerts] = useState([]);
 
   // Assign/Create User Alert

@@ -3,7 +3,7 @@ import { createContext, useState, useEffect } from "react";
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const BASE_URL = process.env.BASE_URL + "/auth";
+  const BASE_URL = import.meta.env.VITE_BASE_URL + "/auth";
 
   const [isloggedin, setisloggedin] = useState(0);
   const [user_detail, setuser_detail] = useState({
